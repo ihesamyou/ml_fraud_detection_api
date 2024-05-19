@@ -20,12 +20,11 @@ RUN apt-get update && apt-get install -y curl
 
 RUN pip install --upgrade pip
 
-RUN python -m pip install -r requirements.txt
-
 WORKDIR /~/ml_fraud_detection_api
 
-# Copy the source code into the container.
-COPY . .
+RUN python -m pip install -r requirements.txt
 
+# Copy the source code into the container.
+COPY . /~/ml_fraud_detection_api
 
 CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8080"]
