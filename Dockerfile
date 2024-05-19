@@ -16,14 +16,13 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # the application crashes without emitting any logs due to buffering.
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /~
-
 RUN apt-get update && apt-get install -y curl
 
 RUN pip install --upgrade pip
 
 RUN python -m pip install -r requirements.txt
 
+WORKDIR /~/ml_fraud_detection_api
 
 # Copy the source code into the container.
 COPY . .
